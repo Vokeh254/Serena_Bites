@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serena Bites | Modern Dining Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .animate-slide-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+        
+        .menu-item:hover .menu-item-content {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .menu-item-content {
+            transition: all 0.3s ease;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .reservation-form input:focus, .reservation-form select:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(234, 179, 8, 0.5);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-amber-600 animate-slide-left">Serena Bites</a>
+            <div class="hidden md:flex space-x-8 animate-slide-right delay-200">
+                <a href="#home" class="text-gray-800 hover:text-amber-600 transition">Home</a>
+                <a href="#menu" class="text-gray-800 hover:text-amber-600 transition">Menu</a>
+                <a href="#reservation" class="text-gray-800 hover:text-amber-600 transition">Reservations</a>
+                <a href="#about" class="text-gray-800 hover:text-amber-600 transition">About</a>
+                <a href="#contact" class="text-gray-800 hover:text-amber-600 transition">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-800 animate-slide-right delay-200">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="#home" class="block py-2 text-gray-800 hover:text-amber-600 transition">Home</a>
+            <a href="#menu" class="block py-2 text-gray-800 hover:text-amber-600 transition">Menu</a>
+            <a href="#reservation" class="block py-2 text-gray-800 hover:text-amber-600 transition">Reservations</a>
+            <a href="#about" class="block py-2 text-gray-800 hover:text-amber-600 transition">About</a>
+            <a href="#contact" class="block py-2 text-gray-800 hover:text-amber-600 transition">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gray-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="parallax bg-[url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')]"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-2xl animate-fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Culinary Excellence <span class="text-amber-400">Redefined</span></h1>
+                <p class="text-lg md:text-xl mb-8">Experience the perfect blend of traditional flavors and modern culinary techniques in the heart of the city.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#reservation" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105">Reserve a Table</a>
+                    <a href="#menu" class="border-2 border-white hover:border-amber-400 text-white hover:text-amber-400 px-6 py-3 rounded-full font-medium transition duration-300 transform hover:scale-105">View Menu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose Savory Bites</h2>
+                <div class="w-20 h-1 bg-amber-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-lg transition duration-300 animate-slide-left delay-100">
+                    <div class="text-amber-500 text-4xl mb-4">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Seasonal Menus</h3>
+                    <p class="text-gray-600">Our chefs craft unique dishes using the freshest seasonal ingredients for an unforgettable dining experience.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-lg transition duration-300 animate-fade-in delay-200">
+                    <div class="text-amber-500 text-4xl mb-4">
+                        <i class="fas fa-wine-glass-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Premium Pairings</h3>
+                    <p class="text-gray-600">Expertly curated wine and cocktail selections to complement every dish on our menu.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-lg transition duration-300 animate-slide-right delay-300">
+                    <div class="text-amber-500 text-4xl mb-4">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Sustainable Dining</h3>
+                    <p class="text-gray-600">Committed to eco-friendly practices, from sourcing local ingredients to zero-waste kitchen operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Menu</h2>
+                <div class="w-20 h-1 bg-amber-500 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Discover our carefully crafted dishes that blend traditional flavors with modern culinary techniques.</p>
+            </div>
+            
+            <div class="flex flex-wrap mb-8 justify-center animate-fade-in delay-100">
+                <button class="menu-tab-btn active px-4 py-2 mx-2 rounded-full bg-amber-600 text-white" data-category="all">All</button>
+                <button class="menu-tab-btn px-4 py-2 mx-2 rounded-full bg-white hover:bg-amber-100 text-gray-800" data-category="starters">Starters</button>
+                <button class="menu-tab-btn px-4 py-2 mx-2 rounded-full bg-white hover:bg-amber-100 text-gray-800" data-category="mains">Main Courses</button>
+                <button class="menu-tab-btn px-4 py-2 mx-2 rounded-full bg-white hover:bg-amber-100 text-gray-800" data-category="desserts">Desserts</button>
+                <button class="menu-tab-btn px-4 py-2 mx-2 rounded-full bg-white hover:bg-amber-100 text-gray-800" data-category="drinks">Drinks</button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="menu-item animate-fade-in delay-200" data-category="starters">
+                    <div class="menu-item-content bg-white rounded-lg overflow-hidden shadow-md h-full">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://i.pinimg.com/736x/69/29/a2/6929a2c14b46ded209e90c0752f35233.jpg" alt="Tuna Tartare" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Nyama Choma</h3>
+                                <span class="text-amber-600 font-bold">$18</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">Experience Kenya's favorite barbeque, featuring juicy, perfectly grilled beef, goat, or lamb. Served with fresh kachumbari (tomato and onion salad) and traditional ugali, it’s a must-try dish that captures authentic local flavors.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">GF</span>
+                                <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">DF</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 2 -->
+                <div class="menu-item animate-fade-in delay-300" data-category="mains">
+                    <div class="menu-item-content bg-white rounded-lg overflow-hidden shadow-md h-full">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://i.pinimg.com/1200x/14/5d/3e/145d3e3198f28e84234b94104fd21f2a.jpg" alt="Filet Mignon" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Tilapia Fry</h3>
+                                <span class="text-amber-600 font-bold">$42</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">Enjoy our freshly sourced tilapia, expertly seasoned and fried crispy. Paired with vegetables and rice or ugali, it offers a taste of fresh, local flavors from Lake Victoria.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">GF Option</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 3 -->
+                <div class="menu-item animate-fade-in delay-400" data-category="desserts">
+                    <div class="menu-item-content bg-white rounded-lg overflow-hidden shadow-md h-full">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://i.pinimg.com/736x/63/a6/65/63a6659d40c699abb63d3d9f5cbdd6f6.jpg" alt="Chocolate Soufflé" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Chapati & Beef Stew</h3>
+                                <span class="text-amber-600 font-bold">$12</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">Delight in soft, layered chapati served with a rich, flavorful beef stew cooked with juicy tomatoes and spices. Perfect for a hearty, satisfying meal anytime.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">V</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 4 -->
+                <div class="menu-item animate-fade-in delay-200" data-category="starters">
+                    <div class="menu-item-content bg-white rounded-lg overflow-hidden shadow-md h-full">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1634324092536-74480096b939?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGlsYXV8ZW58MHx8MHx8fDA%3D" alt="Burrata Salad" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Pilau</h3>
+                                <span class="text-amber-600 font-bold">$16</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">Savor our fragrant, spiced rice dish enriched with tender meat—beef or chicken—and potatoes. Infused with cinnamon, cardamom, and other spices, it’s a celebratory dish packed with aroma and flavor.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">V</span>
+                                <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">GF</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 5 -->
+                <div class="menu-item animate-fade-in delay-300" data-category="mains">
+                    <div class="menu-item-content bg-white rounded-lg overflow-hidden shadow-md h-full">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://i.pinimg.com/736x/69/ea/b9/69eab9de42561b273d40c7f37b9590d5.jpg" alt="Pan-Seared Salmon" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Ugali chicken and Sukuma</h3>
+                                <span class="text-amber-600 font-bold">$28</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">A comforting Kenyan classic chicken, sautéed sukuma wiki (collard greens) seasoned with spices and served alongside hearty ugali (maize porridge). A simple yet satisfying meal that embodies traditional home cooking.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">GF</span>
+                                <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">DF Option</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 6 -->
+                <div class="menu-item animate-fade-in delay-400" data-category="drinks">
+                    <div class="menu-item-content bg-white rounded-lg overflow-hidden shadow-md h-full">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://i.pinimg.com/736x/a5/b3/57/a5b35758ab654e778097b142594f2a20.jpg" alt="Signature Cocktails" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Kenyan Tea - Chai</h3>
+                                <span class="text-amber-600 font-bold">$14</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">Warm, aromatic brews made with locally sourced ingredients.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">Seasonal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 animate-fade-in delay-500">
+                <a href="#" class="inline-block border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white px-6 py-3 rounded-full font-medium transition duration-300">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Make a Reservation</h2>
+                <div class="w-20 h-1 bg-amber-500 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Book your table online for a seamless dining experience. We look forward to serving you!</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto bg-gray-50 rounded-lg shadow-md overflow-hidden animate-fade-in delay-100">
+                <div class="p-8">
+                    <form id="reservation-form" class="reservation-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">Full Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-amber-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-amber-500">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-amber-500">
+                            </div>
+                            <div>
+                                <label for="guests" class="block text-gray-700 mb-2">Number of Guests</label>
+                                <select id="guests" name="guests" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-amber-500">
+                                    <option value="1">1 Person</option>
+                                    <option value="2">2 People</option>
+                                    <option value="3">3 People</option>
+                                    <option value="4">4 People</option>
+                                    <option value="5">5 People</option>
+                                    <option value="6">6 People</option>
+                                    <option value="7">7+ People</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="date" class="block text-gray-700 mb-2">Date</label>
+                                <input type="date" id="date" name="date" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-amber-500">
+                            </div>
+                            <div>
+                                <label for="time" class="block text-gray-700 mb-2">Time</label>
+                                <select id="time" name="time" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-amber-500">
+                                    <option value="17:00">5:00 PM</option>
+                                    <option value="17:30">5:30 PM</option>
+                                    <option value="18:00">6:00 PM</option>
+                                    <option value="18:30">6:30 PM</option>
+                                    <option value="19:00">7:00 PM</option>
+                                    <option value="19:30">7:30 PM</option>
+                                    <option value="20:00">8:00 PM</option>
+                                    <option value="20:30">8:30 PM</option>
+                                    <option value="21:00">9:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <label for="special-requests" class="block text-gray-700 mb-2">Special Requests</label>
+                            <textarea id="special-requests" name="special-requests" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-amber-500"></textarea>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300 transform hover:scale-105">Reserve Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Guests Say</h2>
+                <div class="w-20 h-1 bg-amber-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-6 rounded-lg animate-slide-left delay-100">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-400 text-xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">"Their fresh tilapia fry is a must-try! Crispy on the outside, tender inside, and served with amazing ugali. This is real Kenyan flavor on a plate."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Mary K."w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Mary K.</h4>
+                            <p class="text-gray-400 text-sm">Juja</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-lg animate-fade-in delay-200">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-400 text-xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">"I always order the vegetable stir-fry for my wife, and she says it’s fresh and full of taste,just what she needs for a healthy meal. Clean, tasty, and authentic.!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John M." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">John M.</h4>
+                            <p class="text-gray-400 text-sm">Karen</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-lg animate-slide-right delay-300">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-400 text-xl mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">"Their Mandazi is the best in Nairobi! Perfectly sweet and fluffy — I always grab a few for breakfast with my chai. You can’t go wrong."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Peter W." class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">
+                                Peter W.</h4>
+                            <p class="text-gray-400 text-sm">Westlands</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8 animate-slide-left">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Story</h2>
+                    <div class="w-20 h-1 bg-amber-500 mb-6"></div>
+                    <p class="text-gray-600 mb-4">Founded in 2025, Serena Bites began as a small bistro with a big dream: to bring exceptional dining experiences to our community.</p>
+                    <p class="text-gray-600 mb-6">Today, under the guidance of Executive Chef Matthew Ng'ang'a, we continue to push culinary boundaries while staying true to our roots of quality, creativity, and hospitality.</p>
+                    <div class="flex items-center">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4 border-2 border-amber-500">
+                            <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Chef Marco Ricci" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Matthew Ng'ang'a</h4>
+                            <p class="text-gray-600 text-sm">Executive Chef</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 animate-slide-right delay-100">
+                    <div class="relative">
+                        <div class="w-full h-80 md:h-96 rounded-lg overflow-hidden shadow-lg">
+                            <img src="https://i.pinimg.com/736x/74/d7/9b/74d79bc6dfc3c1435c5a3e32c120859f.jpg" alt="Restaurant Interior" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-amber-500 text-white p-4 rounded-lg shadow-lg hidden md:block">
+                            <div class="text-3xl font-bold">1+</div>
+                            <div class="text-sm">Years of Excellence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
+                <div class="w-20 h-1 bg-amber-500 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">We'd love to hear from you. Reach out for inquiries, special events, or just to say hello!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md animate-slide-left delay-100">
+                    <h3 class="text-xl font-bold mb-6">Get In Touch</h3>
+                    <form id="contact-form">
+                        <div class="mb-4">
+                            <label for="contact-name" class="block text-gray-700 mb-2">Name</label>
+                            <input type="text" id="contact-name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-amber-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="contact-email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="contact-email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-amber-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="contact-subject" class="block text-gray-700 mb-2">Subject</label>
+                            <input type="text" id="contact-subject" name="subject" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-amber-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="contact-message" class="block text-gray-700 mb-2">Message</label>
+                            <textarea id="contact-message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-amber-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300 w-full">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="animate-slide-right delay-200">
+                    <div class="bg-white p-8 rounded-lg shadow-md mb-6">
+                        <h3 class="text-xl font-bold mb-4">Visit Us</h3>
+                        <div class="flex items-start mb-4">
+                            <div class="text-amber-500 mr-3 mt-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <p>Kenyatta Avenue<br>City Square, 62000 00200</p>
+                        </div>
+                        <div class="flex items-start mb-4">
+                            <div class="text-amber-500 mr-3 mt-1">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <p>(254) 708-964-447</p>
+                        </div>
+                        <div class="flex items-start mb-4">
+                            <div class="text-amber-500 mr-3 mt-1">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <p>info@serenabites.com</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-amber-500 mr-3 mt-1">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Hours:</p>
+                                <p>Monday - Thursday: 5:00 PM - 10:00 PM<br>
+                                Friday - Saturday: 5:00 PM - 11:00 PM<br>
+                                Sunday: 5:00 PM - 9:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-amber-500 hover:text-white transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-amber-500 hover:text-white transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-amber-500 hover:text-white transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-amber-500 hover:text-white transition duration-300">
+                                <i class="fab fa-yelp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full animate-fade-in delay-300">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.462574174118!2d36.823809615413446!3d-1.2863890855127119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10ce1e66d0bd%3A0x7efb0980de198e59!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2ske!4v1689878426399!5m2!1sen!2ske" width="100%"  height="400"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-amber-400">Serena Bites</h3>
+                    <p class="text-gray-400">Elevating dining experiences through culinary innovation and impeccable service since 2010.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-amber-400 transition">Home</a></li>
+                        <li><a href="#menu" class="text-gray-400 hover:text-amber-400 transition">Menu</a></li>
+                        <li><a href="#reservation" class="text-gray-400 hover:text-amber-400 transition">Reservations</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-amber-400 transition">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-amber-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Opening Hours</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Mon-Thu: 5PM - 10PM</li>
+                        <li>Fri-Sat: 5PM - 11PM</li>
+                        <li>Sun: 5PM - 9PM</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to receive updates on special events and seasonal menus.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg w-full text-gray-900">
+                        <button type="submit" class="bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Serena Bites. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-amber-400 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-amber-400 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-amber-400 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-amber-400 transition"><i class="fab fa-yelp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Reservation Success Modal -->
+    <div id="reservation-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 animate-fade-in">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check text-green-500 text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Reservation Confirmed!</h3>
+                <p class="text-gray-600 mb-6">Thank you for choosing Serena Bites. We look forward to serving you.</p>
+                <button id="close-modal" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-lg font-medium transition duration-300">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-amber-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Menu Filtering
+        const menuTabBtns = document.querySelectorAll('.menu-tab-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+        
+        menuTabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                menuTabBtns.forEach(b => b.classList.remove('active', 'bg-amber-600', 'text-white'));
+                menuTabBtns.forEach(b => b.classList.add('bg-white', 'hover:bg-amber-100', 'text-gray-800'));
+                
+                // Add active class to clicked button
+                this.classList.add('active', 'bg-amber-600', 'text-white');
+                this.classList.remove('bg-white', 'hover:bg-amber-100', 'text-gray-800');
+                
+                const category = this.getAttribute('data-category');
+                
+                // Show/hide menu items based on category
+                menuItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Reservation Form Submission
+        document.getElementById('reservation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send this data to your server
+            const formData = new FormData(this);
+            const reservationData = {};
+            formData.forEach((value, key) => {
+                reservationData[key] = value;
+            });
+            
+            console.log('Reservation Data:', reservationData); // For demo purposes
+            
+            // Show success modal
+            document.getElementById('reservation-modal').classList.remove('hidden');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Close Modal
+        document.getElementById('close-modal').addEventListener('click', function() {
+            document.getElementById('reservation-modal').classList.add('hidden');
+        });
+
+        // Contact Form Submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send this data to your server
+            const formData = new FormData(this);
+            const contactData = {};
+            formData.forEach((value, key) => {
+                contactData[key] = value;
+            });
+            
+            console.log('Contact Data:', contactData); // For demo purposes
+            
+            // Show success message
+            alert('Thank you for your message! We will get back to you soon.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Set minimum date for reservation to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+
+        // Intersection Observer for animations
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-left, .animate-slide-right');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            elements.forEach(element => {
+                element.style.animationPlayState = 'paused';
+                observer.observe(element);
+            });
+        };
+        
+        // Run after page loads
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
